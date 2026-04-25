@@ -1,0 +1,5 @@
+--- /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_description/urdf/turtlebot3_burger.urdf
++++ /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_description/urdf/turtlebot3_burger.urdf.suggested
+@@ line 173 @@
+-    <origin xyz="0.0 0 0.172" rpy="0 0 3.1415"/>
++    <origin xyz="0.0 0 0.172" rpy="0.0000 0.0000 -0.0810"/>

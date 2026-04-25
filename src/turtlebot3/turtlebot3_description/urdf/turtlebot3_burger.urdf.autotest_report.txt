@@ -1,0 +1,24 @@
+TurtleBot3 URDF axis autotest report
+URDF: /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_description/urdf/turtlebot3_burger.urdf
+
+Initial front-object observation:
+  nearest object distance=0.637 m, angle=3.061 rad (175.4 deg)
+
+Wheel tests:
+  right wheel: angle shift=-0.444 rad, joint delta=3.6187 rad, odom yaw shift=0.474 rad, physical motion=forward, suggested axis=0 0 1
+  left wheel: angle shift=0.728 rad, joint delta=3.6233 rad, odom yaw shift=-0.863 rad, physical motion=forward, suggested axis=0 0 1
+
+Straight cmd_vel test:
+  front distance before=0.589 m, after=0.587 m, delta=-0.002 m
+  interpretation: straight motion was too small or too noisy to classify confidently
+
+scan_joint suggestion:
+  suggested yaw=-0.0810 rad (-4.6 deg)
+
+Suggested URDF edits:
+  scan_joint: line 173: <origin xyz="0.0 0 0.172" rpy="0 0 3.1415"/> -> <origin xyz="0.0 0 0.172" rpy="0.0000 0.0000 -0.0810"/>
+
+Patch file: /home/ubuntu/turtlebot3_ws/src/turtlebot3/turtlebot3_description/urdf/turtlebot3_burger.urdf.autotest_patch.diff
+
+Warnings:
+  Straight cmd_vel test was inconclusive. Consider increasing object contrast or straight duration slightly.

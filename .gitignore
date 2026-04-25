@@ -1,0 +1,45 @@
+# Build products
+build/
+install/
+log/
+.colcon/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ROS bags and recordings
+*.bag
+*.db3
+*.mcap
+*.active
+
+# Large local archives / datasets / videos
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.mp4
+*.webm
+*.avi
+*.mov
+*.lvx2
+
+# Local runtime output
+logs/
+*.log
+latest_detections.json
+latest_detections.json.tmp
+
+# Editor / OS noise
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+

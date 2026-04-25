@@ -1,0 +1,15 @@
+[Unit]
+Description=ROS2 UDP bridge for laptop YOLO traffic sign detections
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/turtlebot3_ws
+ExecStart=/bin/bash -lc 'source /opt/ros/jazzy/setup.bash && source /home/ubuntu/turtlebot3_ws/install/setup.bash && exec ros2 run tb3_camera_web yolo_udp_bridge --ros-args -p bind_host:=0.0.0.0 -p udp_port:=5005 -p topic:=/vision/traffic_sign_detections -p latest_json_path:=/home/ubuntu/camera_web/latest_detections.json'
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
