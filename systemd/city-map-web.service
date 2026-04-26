@@ -1,0 +1,34 @@
+[Unit]
+Description=TurtleBot3 city web RViz dashboard
+Wants=network-online.target camera-web.service web-rviz-state.service
+After=network-online.target camera-web.service web-rviz-state.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+Environment=CITY_MAP_HOST=0.0.0.0
+Environment=CITY_MAP_PORT=8090
+Environment=CITY_MAP_ORIGIN_OFFSET_X=0.2
+Environment=CITY_MAP_ORIGIN_OFFSET_Y=0.2
+Environment=CITY_CAMERA_STREAM_URL=http://127.0.0.1:8080/stream.mjpg
+Environment=CITY_DETECTIONS_URL=http://127.0.0.1:8080/detections.json
+Environment=CITY_SCAN_PATH=/home/ubuntu/camera_web/latest_scan.json
+Environment=CITY_POSE_PATH=/home/ubuntu/camera_web/latest_pose.json
+Environment=CITY_COSTMAP_PATH=/home/ubuntu/camera_web/latest_costmaps.json
+Environment=CITY_TF_PATH=/home/ubuntu/camera_web/latest_tf.json
+Environment=CITY_INITIAL_POSE_COMMAND_PATH=/home/ubuntu/camera_web/initial_pose_command.json
+Environment=CITY_NAV_GOAL_COMMAND_PATH=/home/ubuntu/camera_web/nav_goal_command.json
+Environment=CITY_NAV_GOAL_STATUS_PATH=/home/ubuntu/camera_web/nav_goal_status.json
+Environment=CITY_NAV_GOAL_ACTION=/navigate_to_pose
+WorkingDirectory=/home/ubuntu/camera_web
+ExecStart=/usr/bin/python3 /home/ubuntu/camera_web/city_map_web.py
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=false
+
+[Install]
+WantedBy=multi-user.target

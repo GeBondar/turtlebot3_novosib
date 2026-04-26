@@ -1,0 +1,19 @@
+[Unit]
+Description=ROS2 bridge for TurtleBot3 web RViz scan and base_link state
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/turtlebot3_ws
+Environment=TURTLEBOT3_MODEL=burger
+Environment=LDS_MODEL=RPILIDAR-C1
+Environment=ROS_DOMAIN_ID=148
+Environment=ROS_AUTOMATIC_DISCOVERY_RANGE=SUBNET
+ExecStart=/bin/bash -lc 'source /opt/ros/jazzy/setup.bash && source /home/ubuntu/turtlebot3_ws/install/setup.bash && exec ros2 run tb3_camera_web web_rviz_state --ros-args -p scan_topic:=/scan -p fixed_frame:=map -p fallback_fixed_frame:=odom -p base_frame:=base_link -p scan_json_path:=/home/ubuntu/camera_web/latest_scan.json -p pose_json_path:=/home/ubuntu/camera_web/latest_pose.json -p costmap_json_path:=/home/ubuntu/camera_web/latest_costmaps.json -p tf_json_path:=/home/ubuntu/camera_web/latest_tf.json -p global_costmap_topic:=/global_costmap/costmap -p local_costmap_topic:=/local_costmap/costmap -p initial_pose_command_path:=/home/ubuntu/camera_web/initial_pose_command.json -p initial_pose_topic:=/initialpose -p initial_pose_republish_count:=20 -p nav_goal_command_path:=/home/ubuntu/camera_web/nav_goal_command.json -p nav_goal_status_path:=/home/ubuntu/camera_web/nav_goal_status.json -p nav_to_pose_action:=/navigate_to_pose -p nav_goal_xy_tolerance:=0.08 -p nav_goal_yaw_tolerance:=0.17'
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

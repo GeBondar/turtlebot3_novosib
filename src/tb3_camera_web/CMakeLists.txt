@@ -15,6 +15,12 @@ install(PROGRAMS
   RENAME yolo_udp_bridge
 )
 
+install(PROGRAMS
+  scripts/web_rviz_state_node.py
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME web_rviz_state
+)
+
 install(DIRECTORY
   launch
   DESTINATION share/${PROJECT_NAME}
